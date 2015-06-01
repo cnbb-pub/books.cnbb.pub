@@ -14,12 +14,13 @@
             (title title)
             (link '(rel "stylesheet" href "/css/bootstrap-min.css"))
             (link '(rel "stylesheet" href "/css/bootstrap-spacelab-min.css"))
+            (link '(rel "stylesheet" href "/css/styles.css"))
             (script '(src "/js/bootstrap-min.js"))))
         (body
           (main
             (list
               (site-nav:get-navbar)
-              (div '(class "section")
+              (div '(class "section" id "main")
                 (div '(class "container")
                   (div '(class "row well")
                     remaining))))))))))
