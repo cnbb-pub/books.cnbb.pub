@@ -14,8 +14,7 @@
             (title title)
             (link '(rel "stylesheet" href "/css/bootstrap-min.css"))
             (link '(rel "stylesheet" href "/css/bootstrap-spacelab-min.css"))
-            (link '(rel "stylesheet" href "/css/styles.css"))
-            (script '(src "/js/bootstrap-min.js"))))
+            (link '(rel "stylesheet" href "/css/styles.css"))))
         (body
           (main
             (list
@@ -23,7 +22,15 @@
               (div '(class "section" id "main")
                 (div '(class "container")
                   (div '(class "row well")
-                    remaining))))))))))
+                    remaining)))
+              (div '(class "section" id "footer")
+                (div '(class "container")
+                  (div '(class "row well")
+                    (get-footer-content))))
+              (div '(class "section" id "subfooter")
+                (div '(class "container")
+                  (div '(class "row")
+                    (get-subfooter-content)))))))))))
 
 (defun base-sidebar-page (title sidebar remaining)
   "We can also make building HTML easier by using functions."
@@ -85,6 +92,12 @@
                     user-id " (user id) | "
                     account-id " (account id)"))
             (div (p fetched-content))))))))
+
+(defun get-footer-content ()
+  "Place-holder ...")
+
+(defun get-subfooter-content ()
+  "Place-holder ...")
 
 (defun four-oh-four (message)
   "Custom 404 page."
