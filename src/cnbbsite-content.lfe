@@ -14,7 +14,8 @@
             (title title)
             (link '(rel "stylesheet" href "/css/bootstrap-min.css"))
             (link '(rel "stylesheet" href "/css/bootstrap-spacelab-min.css"))
-            (link '(rel "stylesheet" href "/css/styles.css"))))
+            (link '(rel "stylesheet" href "/css/styles.css"))
+            (script '(src "/js/bootstrap-min.js"))))
         (body
           (main
             (list
@@ -30,7 +31,10 @@
               (div '(class "section" id "subfooter")
                 (div '(class "container")
                   (div '(class "row")
-                    (get-subfooter-content)))))))))))
+                    (get-subfooter-content))))
+              (footer '(class "sticky-footer")
+                (div '(class "container")
+                  (get-sticky-footer-content))))))))))
 
 (defun base-sidebar-page (title sidebar remaining)
   "We can also make building HTML easier by using functions."
@@ -49,7 +53,7 @@
           title
           (div '(class "col-md-3 col-sm-4 sidebar")
             (ul '(class "nav nav-stacked nav-pills")
-              (cnbbsite-nav:get-side-menu)))
+              (cnbbsite-nav:get-main-nav)))
           (div
             (list
               (h1 title)
@@ -94,10 +98,13 @@
             (div (p fetched-content))))))))
 
 (defun get-footer-content ()
-  "Place-holder ...")
+  "Footer place-holder ...")
 
 (defun get-subfooter-content ()
-  "Place-holder ...")
+  "Subfooter place-holder ...")
+
+(defun get-sticky-footer-content ()
+  "Sticky-footer place-holder ...")
 
 (defun four-oh-four (message)
   "Custom 404 page."
@@ -106,7 +113,7 @@
         "404"
         (div
           (list
-            (h1 '"404 - Not Found")
+            (h1 "404 - Not Found")
             (div (p message)))))))
 
 
