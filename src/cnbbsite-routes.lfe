@@ -1,4 +1,4 @@
-(defmodule site-routes
+(defmodule cnbbsite-routes
   (export all))
 
 (include-file "deps/exemplar/include/html-macros.lfe")
@@ -6,11 +6,11 @@
 
 (defroutes
   ('GET "/"
-    (site-content:get-sidebar-content arg-data))
+    (cnbbsite-content:get-sidebar-content arg-data))
   ('GET "/content/:id"
-    (site-content:get-content id arg-data))
+    (cnbbsite-content:get-content id arg-data))
   ('GET "/relation/:userid/:accountid"
-    (site-content:get-content userid accountid arg-data))
+    (cnbbsite-content:get-content userid accountid arg-data))
   ;; When nothing matches, do this
   ('NOTFOUND
    (let* ((joined-path (++ "/" (string:join path "/")))
@@ -20,6 +20,6 @@
                    "arg-data: ~p~n~n"))
           (msg-args `(,path ,joined-path ,arg-data)))
     (io:format msg msg-args)
-    (site-content:four-oh-four
+    (cnbbsite-content:four-oh-four
       (++ (strong "Unmatched Route: ") joined-path)))))
 

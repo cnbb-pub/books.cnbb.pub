@@ -1,4 +1,4 @@
-(defmodule site-nav
+(defmodule cnbbsite-nav
   (export all))
 
 (include-lib "deps/exemplar/include/html-macros.lfe")
@@ -19,7 +19,7 @@
     (div '(class "container")
       (div '(class "navbar-header")
         (list
-          (img '(src "images/logo-1.6-long-3-x50.png"))
+          (img '(src "/images/logo-1.6-long-3-x50.png"))
           (div '(class "collapse navbar-collapse navbar-ex1-collapse")
             (ul '(class "nav navbar-nav navbar-right")
               (get-side-menu))))))))

@@ -1,4 +1,4 @@
-(defmodule site
+(defmodule cnbbsite
   (export all))
 
 (defun my-adder (x y)
@@ -11,4 +11,4 @@
 
   In particular, this function is intended to handle all traffic for this
   app."
-  (lfest:out-helper arg-data #'site-routes:routes/3))
+  (lfest:out-helper arg-data #'cnbbsite-routes:routes/3))

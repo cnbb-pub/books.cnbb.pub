@@ -1,4 +1,4 @@
-(defmodule site-content
+(defmodule cnbbsite-content
   (export all))
 
 (include-lib "deps/exemplar/include/html-macros.lfe")
@@ -19,7 +19,7 @@
         (body
           (main
             (list
-              (site-nav:get-navbar)
+              (cnbbsite-nav:get-navbar)
               (div '(class "section" id "main")
                 (div '(class "container")
                   (div '(class "row well")
@@ -42,7 +42,7 @@
           title
           (div '(class "col-md-3 col-sm-4 sidebar")
             (ul '(class "nav nav-stacked nav-pills")
-              (site-nav:get-side-menu)))
+              (cnbbsite-nav:get-side-menu)))
           (div
             (list
               (h1 title)
