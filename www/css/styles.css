@@ -1,7 +1,29 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
 a {
   color: #666;
 }
 
 a:hover {
   color: #999;
+}
+
+.sticky-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-image: linear-gradient(#eee, #fff 50%, #eaeaea);
+  background-repeat: no-repeat;
+  border: 1px solid #d5d5d5;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.3);
 }
