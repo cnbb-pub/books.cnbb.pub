@@ -2,7 +2,7 @@ ETC_DIR = ./etc
 YAWS_DIR = $(DEPS)/yaws
 YAWS = $(YAWS_DIR)/bin/yaws
 YAWS_CONF = $(ETC_DIR)/yaws.conf
-YAWS_SERVER_ID = cbnbeans
+YAWS_SERVER_ID = cnbbooks
 
 app-deps:
 	@mkdir -p logs
