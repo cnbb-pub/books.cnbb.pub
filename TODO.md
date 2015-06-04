@@ -3,6 +3,7 @@
 ## In-Progress
 
 * [ ] Add real items to side nav
+* [ ] Add real items to top nav
 * [ ] Fill in footer
 * [x] Add sticky bottom
   * [ ] Add siloutette imagery
@@ -10,7 +11,6 @@
 ## Not-Started
 
 * [ ] Update to be responsive
-* [ ] Add real items to top nav
 * [ ] Lighten footer background color
 * [ ] Only show side nav on main page
   * [ ] Create location path content for use above main content

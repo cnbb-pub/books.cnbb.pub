@@ -4,15 +4,12 @@
 (include-lib "deps/exemplar/include/html-macros.lfe")
 
 (defun get-side-menu ()
-  (list
-    (li (a '(href "/") "Main Page"))
-    (li (a '(href "/content/1") "/content/1"))
-    (li (a '(href "/content/2") "/content/2"))
-    (li (a '(href "/content/3") "/content/3"))
-    (li
-      (list
-        (a '(href "/relation/1/2") "/relation/1/2")))
-    (li (a '(href "/bob") '"404"))))
+  (ul '(class "nav navbar-nav navbar-right")
+    (list
+      (li (a '(href "/") "Home"))
+      (li (a '(href "/content/1") "Books"))
+      (li (a '(href "/content/2") "Purchasing"))
+      (li (a '(href "/content/3") "About")))))
 
 (defun get-navbar()
   (nav '(class "navbar navbar-top" role "navigation")
@@ -21,8 +18,7 @@
         (list
           (img '(src "/images/logo-1.6-long-3-x50.png"))
           (div '(class "collapse navbar-collapse navbar-ex1-collapse")
-            (ul '(class "nav navbar-nav navbar-right")
-              (get-side-menu))))))))
+            (get-side-menu)))))))
 
 (defun get-main-nav ()
   (div '(class "panel-group" id "accordion" role "tablist" aria-multiselectable "true")
