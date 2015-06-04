@@ -66,9 +66,9 @@
   (div '(class "subheader")
     (div '(class "social")
       (list
-        (a '(href "http://twitter.com/CNBBooks") (span '(class "icon-twitter")))
+        (a `(href ,(cnbbsite-const:twitter)) (span '(class "icon-twitter")))
         (span "&nbsp")
-        (span '(class "icon-rss"))))))
+        (a `(href ,(cnbbsite-const:blogfeed)) (span '(class "icon-rss")))))))
 
 (defun get-content (user-id account-id arg-data)
   "3-arity content API.
@@ -97,11 +97,11 @@
   (div '(class "subfooter")
     (div '(class "social")
       (list
-        (span '(class "icon-newspaper"))
+        (a `(href ,(cnbbsite-const:newslist)) (span '(class "icon-newspaper")))
         (span "&nbsp")
-        (a '(href "http://twitter.com/CNBBooks") (span '(class "icon-twitter")))
+        (a `(href ,(cnbbsite-const:twitter)) (span '(class "icon-twitter")))
         (span "&nbsp")
-        (span '(class "icon-rss"))))))
+        (a `(href ,(cnbbsite-const:blogfeed)) (span '(class "icon-rss")))))))
 
 (defun get-sticky-footer-content ()
   (div '(class "subfooter")
