@@ -25,7 +25,8 @@
                    (get-subfooter-content))))
     (footer '(class "sticky-footer")
             (div '(class "container text-center")
-                 (get-sticky-footer-content))))))
+                 (get-sticky-footer-content)))
+    (get-js))))
 
 (defun get-sidebar-content (arg-data)
   "1-arity content API function.
@@ -109,6 +110,10 @@
 
 (defun icon-redirect (_arg-data)
   #(redirect_local "/images/favicon.png"))
+
+(defun get-js ()
+  (script '(src "/js/bootstrap-min.js"))
+  (script '(src "/js/jquery-1.11.3.min.js")))
 
 (defun four-oh-four (message)
   "Custom 404 page."

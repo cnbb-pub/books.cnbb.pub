@@ -13,7 +13,6 @@
           (list
             (title title)
             (get-css)
-            (get-js)
             (get-favicon)))
         (body
           (cnbbsite-content:get-content-sections
@@ -25,14 +24,10 @@
     (link '(rel "stylesheet" href "/css/bootstrap-spacelab-min.css"))
     (link '(rel "stylesheet" href "/css/styles.css"))))
 
-(defun get-js ()
-  (script '(src "/js/bootstrap-min.js")))
-
 (defun get-favicon ()
   (link '(rel "icon"
           type "image/png"
           href "/images/favicon.png")))
-
 
 (defun base-sidebar-page (title sidebar remaining)
   "We can also make building HTML easier by using functions."
