@@ -17,7 +17,8 @@
     (div '(class "container")
       (div '(class "navbar-header")
         (list
-          (img '(src "/images/logo-1.6-long-3-x50.png"))
+          (img '(src "/images/logo-1.6-long-3-x50.png"
+                 class "navlogo"))
           (div '(class "collapse navbar-collapse navbar-ex1-collapse")
             (get-side-menu)))))))
 

@@ -11,7 +11,9 @@
       (list
         (head
           (list
-            (title title)
+            (title (++ (cnbbsite-const:title-prefix)
+                       title
+                       (cnbbsite-const:title-postfix)))
             (get-css)
             (get-favicon)))
         (body

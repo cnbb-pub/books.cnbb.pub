@@ -17,7 +17,7 @@
                    remaining)))
     (div '(class "section" id "footer")
          (div '(class "container")
-              (div '(class "row well")
+              (div '(class "row well footer")
                    (get-footer-content))))
     (div '(class "section" id "subfooter")
          (div '(class "container")
