@@ -3,7 +3,7 @@
 ## In-Progress
 
 * [ ] Add real items to side nav
-* [ ] Separate top nav from side nav
+* [ ] Fill in footer
 * [x] Add sticky bottom
   * [ ] Add siloutette imagery
 
@@ -12,7 +12,6 @@
 * [ ] Update to be responsive
 * [ ] Add real items to top nav
 * [ ] Lighten footer background color
-* [ ] Fill in footer
 * [ ] Only show side nav on main page
   * [ ] Create location path content for use above main content
     * http://getbootstrap.com/components/#breadcrumbs
@@ -22,8 +21,10 @@
 * [ ] Create category template page
 
 ## Done
+
 * [x] Add logging support
 * [x] Center subfooter content
 * [x] Fill in subfooter
 * [x] Add icomoon support
 * [x] Add Twitter link
+* [x] Separate top nav from side nav

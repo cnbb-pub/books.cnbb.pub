@@ -7,10 +7,10 @@
   (main
    (list
     (cnbbsite-nav:get-navbar)
-    (div '(class "section" id "subfooter")
+    (div '(class "section" id "subheader")
          (div '(class "container")
               (div '(class "row text-right")
-                   (get-subfooter-content))))
+                   (get-subheader-content))))
     (div '(class "section" id "main")
          (div '(class "container")
               (div '(class "row well")
@@ -61,6 +61,14 @@
             (h2 (++ "Item " item-id))
             (div (p fetched-content))))))))
 
+(defun get-subheader-content ()
+  (div '(class "subheader")
+    (div '(class "social")
+      (list
+        (a '(href "http://twitter.com/CNBBooks") (span '(class "icon-twitter")))
+        (span "&nbsp")
+        (span '(class "icon-rss"))))))
+
 (defun get-content (user-id account-id arg-data)
   "3-arity content API.
 
@@ -82,12 +90,14 @@
             (div (p fetched-content))))))))
 
 (defun get-footer-content ()
-  "Footer place-holder ...")
+  "About | Blog | Media | How to Order")
 
 (defun get-subfooter-content ()
   (div '(class "subfooter")
     (div '(class "social")
       (list
+        (span '(class "icon-newspaper"))
+        (span "&nbsp")
         (a '(href "http://twitter.com/CNBBooks") (span '(class "icon-twitter")))
         (span "&nbsp")
         (span '(class "icon-rss"))))))

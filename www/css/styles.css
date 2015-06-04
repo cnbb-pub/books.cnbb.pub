@@ -16,6 +16,10 @@ a:hover {
   color: #999;
 }
 
+.subheader {
+  padding-bottom: 1em;
+}
+
 .social {
   font-size: 2em;
   padding-left: 4em;
