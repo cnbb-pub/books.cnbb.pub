@@ -8,6 +8,7 @@
     (list
       (li (a '(href "/") "Home"))
       (li (a '(href "/content/1") "Books"))
+      (li (a '(href "/content/1") "Coming Soon"))
       (li (a '(href "/content/2") "Purchasing"))
       (li (a '(href "/content/3") "About")))))
 
