@@ -22,67 +22,47 @@
           (div '(class "collapse navbar-collapse navbar-ex1-collapse")
             (get-side-menu)))))))
 
-(defun get-main-nav ()
-  (div '(class "panel-group" id "accordion" role "tablist" aria-multiselectable "true")
-    (list
-    ;; Menu item 1
+(defun main-menu ()
+  (main-menu-group '((#(group-name "Books")
+                      #(links (#("New Releases" "/books/new-releases" false)
+                               #("Popular" "/books/popular" false)
+                               #("All" "/books/all" false))))
+                     (#(group-name "Genres")
+                      #(links (#("Historical Fiction" "/genres/hf" true)
+                               #("Reference" "/genres/ref" false)
+                               #("Science Fiction" "/genres/sf" false)
+                               #("Technical" "/genres/tech" false)
+                               #("Young Adult" "/genres/ya" false))))
+                     (#(group-name "Authors")
+                      #(links (#("Alice" "/authors/alice" false)
+                               #("Bob" "/authors/bob" false)
+                               #("Carol" "/authors/carol" false)))))))
 
-    (div '(class "panel panel-default")
-      (list
-      (div '(class "panel-heading" role "navigation" id "headingBooks")
-        (h4 '(class "panel-title") "Books"))
-      (div '(id "collapseOne" class "panel-collapse collapse in" role "presentation" aria-labelledby "headingBooks")
-        (div '(class "panel-body")
-          (ul '(class "nav nav-pills nav-stacked")
-            (list
-              (li '(roll "presentation" class "active")
-                  (a '(href "#") "New Releases"))
-              (li '(roll "presentation" )
-                  (a '(href "#") "Popular"))
-              (li '(roll "presentation")
-                  (a '(href "#") "All"))))))))
+(defun main-menu-group (sections)
+  (div '(class "panel-group" role "tablist")
+       (lists:map #'main-menu-section/1 sections)))
 
-    ;; Menu item 2
+(defun main-menu-section
+  ((`(#(group-name ,name) #(links ,items)))
+   (div '(class "panel panel-default")
+     (list
+       (div `(class "panel-heading" role "tab" id ,(++ name "GroupHeading"))
+         (h4 '(class "panel-title" id "-collapsible-list-group-")
+           (a `(class "collapsed" data-toggle "collapse" href ,(++ "#" name "Group")
+                aria-expanded "false" aria-controls ,(++ name "Group"))
+              name)))
+       (div `(id ,(++ name "Group") class "panel-collapse collapse" role "tabpanel"
+              aria-labelledby ,(++ name "GroupHeading") aria-expanded "false"
+              style "height: 0px;")
+         (ul '(class "list-group")
+           (lists:map #'main-menu-item/1 items)))))))
 
-    (div '(class "panel panel-default")
-      (list
-      (div '(class "panel-heading" role "tab" id "headingGenres")
-        (h4 '(class "panel-title") "Genres"))
-      (div '(id "collapseTwo" class "panel-collapse collapse in" role "tabpanel" aria-labelledby "headingGenres")
-        (div '(class "panel-body")
-          (ul '(class "nav nav-pills nav-stacked")
-            (list
-              (li '(roll "presentation" class "active")
-                  (a '(href "#") "Historical Fiction"))
-              (li '(roll "presentation" )
-                  (a '(href "#") "Reference"))
-              (li '(roll "presentation" )
-                  (a '(href "#") "Science Fiction"))
-              (li '(roll "presentation" )
-                  (a '(href "#") "Technical"))
-              (li '(roll "presentation")
-                  (a '(href "#") "Young Adult"))))))))
+(defun main-menu-item
+  ((`#(,name ,path ,active?))
+   (li `(class ,(++ "list-group-item" (highlight active?)))
+       (a `(href ,path) name))))
 
-    ;; Menu item 3
-
-    (div '(class "panel panel-default")
-      (list
-      (div '(class "panel-heading" role "tab" id "headingAuthors")
-        (h4 '(class "panel-title") "Authors"))
-      (div '(id "collapseThree" class "panel-collapse collapse in" role "tabpanel" aria-labelledby "headingAuthors")
-        (div '(class "panel-body")
-          (ul '(class "nav nav-pills nav-stacked")
-            (list
-              (li '(roll "presentation" class "active")
-                  (a '(href "#") "Alice"))
-              (li '(roll "presentation" )
-                  (a '(href "#") "Bob"))
-              (li '(roll "presentation" )
-                  (a '(href "#") "Carol"))
-              (li '(roll "presentation" )
-                  (a '(href "#") "Dave"))
-              (li '(roll "presentation")
-                  (a '(href "#") "Eve"))))))))
-
-        )))
-
+(defun highlight (active)
+  (if active
+    " active"
+    ""))

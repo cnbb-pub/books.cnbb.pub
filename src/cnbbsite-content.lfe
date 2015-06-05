@@ -38,7 +38,7 @@
           title
           (div '(class "col-md-3 col-sm-4 sidebar")
             (ul '(class "nav nav-stacked nav-pills")
-              (cnbbsite-nav:get-main-nav)))
+              (cnbbsite-nav:main-menu)))
           (div
             (list
               (h1 title)
@@ -112,8 +112,8 @@
   #(redirect_local "/images/favicon.png"))
 
 (defun get-js ()
-  (script '(src "/js/bootstrap-min.js"))
-  (script '(src "/js/jquery-1.11.3.min.js")))
+  (list (script '(src "/js/jquery-1.11.3.min.js"))
+        (script '(src "/js/bootstrap-min.js"))))
 
 (defun four-oh-four (message)
   "Custom 404 page."

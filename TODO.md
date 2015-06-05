@@ -2,8 +2,12 @@
 
 ## In-Progress
 
-* [ ] Add real items to side nav
-* [ ] Add real items to top nav
+* [x] Add real items to side nav
+  * [ ] Update routes to match
+* [x] Add real items to top nav
+  * [ ] Update routes to match
+  * [ ] Set menus to expand when a link is active
+  * [ ] Change blue "active" color to light grey
 * [x] Fill in footer
   * [ ] Convert footer menu to function in nav module
   * [ ] Add links to footer menu
