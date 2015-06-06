@@ -9,21 +9,21 @@
   * [x] Update routes to match
   * [x] Set menus to expand when a link is active
   * [ ] Change blue "active" color to light grey
-
+* [ ] Rename some more general modules:
+  * [x] cnbbsite-templates.lfe -> cnbb-tmpls.lfe
+  * [x] cnbbsite-util.lfe -> cnbb-util.lfe
+  * [x] cnbbsite-const.lfe -> cnbb-const.lfe
+  
 
 ## Not-Started
 
+* [ ] Move "data" of menus into dedicated module
 * [ ] Fix background color of top nav and main content area to match footers
 * [ ] Make subtitle font smaller
 * [ ] Add color highlights to books, authors, and genres
   * [ ] Each should have it's own "theme color"
   * [ ] Menus should have a bar of color above/below
   * [ ] Panoramic header images for each top-level page should be in matching color
-* [ ] Rename some more general modules:
-  * [ ] cnbbsite-templates.lfe -> cnbb-tmpls.lfe
-  * [ ] cnbbsite-util.lfe -> cnbb-util.lfe
-  * [ ] cnbbsite-const.lfe -> cnbb-const.lfe
-* [ ] Fix mouse-over on main nav obscuring logo
 * [ ] Update to be responsive
 * [ ] Only show side nav on main, books, genres, and authors pages
   * [ ] Create location path content for use above main content
@@ -55,3 +55,4 @@
 * [x] Fill in footer
   * [x] Convert footer menu to function in nav module
   * [x] Add links to footer menu
+* [x] Fix mouse-over on main nav obscuring logo
