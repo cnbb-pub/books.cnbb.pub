@@ -27,7 +27,7 @@
   ;; Misc
   ('GET "/favicon.ico" (cnbbsite-content:icon-redirect arg-data))
   ('GET "/relation/:userid/:accountid"
-        (cnbbsite-templates:get-content userid accountid arg-data))
+        (cnbb-tmpls:get-content userid accountid arg-data))
   ;; Not Found
   ('NOTFOUND
    (let* ((joined-path (++ "/" (string:join path "/")))

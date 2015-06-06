@@ -1,4 +1,4 @@
-(defmodule cnbbsite-templates
+(defmodule cnbb-tmpls
   (export all))
 
 (include-lib "deps/exemplar/include/html-macros.lfe")
@@ -11,9 +11,9 @@
       (list
         (head
           (list
-            (title (++ (cnbbsite-const:title-prefix)
+            (title (++ (cnbb-const:title-prefix)
                        title
-                       (cnbbsite-const:title-postfix)))
+                       (cnbb-const:title-postfix)))
             (get-css)
             (get-favicon)))
         (body
@@ -82,9 +82,9 @@
   (div '(class "subheader")
     (div '(class "social")
       (list
-        (a `(href ,(cnbbsite-const:twitter)) (span '(class "icon-twitter")))
+        (a `(href ,(cnbb-const:twitter)) (span '(class "icon-twitter")))
         (span "&nbsp")
-        (a `(href ,(cnbbsite-const:blogfeed)) (span '(class "icon-rss")))))))
+        (a `(href ,(cnbb-const:blogfeed)) (span '(class "icon-rss")))))))
 
 
 (defun get-footer-content ()
@@ -94,11 +94,11 @@
   (div '(class "subfooter")
     (div '(class "social")
       (list
-        (a `(href ,(cnbbsite-const:newslist)) (span '(class "icon-newspaper")))
+        (a `(href ,(cnbb-const:newslist)) (span '(class "icon-newspaper")))
         (span "&nbsp")
-        (a `(href ,(cnbbsite-const:twitter)) (span '(class "icon-twitter")))
+        (a `(href ,(cnbb-const:twitter)) (span '(class "icon-twitter")))
         (span "&nbsp")
-        (a `(href ,(cnbbsite-const:blogfeed)) (span '(class "icon-rss")))))))
+        (a `(href ,(cnbb-const:blogfeed)) (span '(class "icon-rss")))))))
 
 (defun get-js ()
   (list (script '(src "/js/jquery-1.11.3.min.js"))
