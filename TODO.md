@@ -7,12 +7,13 @@
   * [x] Update routes to match
 * [x] Add real items to top nav
   * [x] Update routes to match
-  * [ ] Set menus to expand when a link is active
+  * [x] Set menus to expand when a link is active
   * [ ] Change blue "active" color to light grey
 
 
 ## Not-Started
 
+* [ ] Fix background color of top nav and main content area to match footers
 * [ ] Make subtitle font smaller
 * [ ] Add color highlights to books, authors, and genres
   * [ ] Each should have it's own "theme color"

@@ -71,7 +71,7 @@
      title
      (div '(class "col-md-3 col-sm-4 sidebar")
           (ul '(class "nav nav-stacked nav-pills")
-              (cnbbsite-nav:side-nav)))
+              (cnbbsite-nav:side-nav arg-data)))
      (div
       (list
        (h1 title)

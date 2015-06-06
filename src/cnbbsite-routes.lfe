@@ -36,7 +36,7 @@
                    "joined path: ~p~n"
                    "arg-data: ~p~n~n"))
           (msg-args `(,path ,joined-path ,arg-data)))
-     (logjam:info (MODULE) 'routes/3 "Note found: ~p" `(,joined-path))
+     (logjam:info (MODULE) 'routes/3 "Not found: ~p" `(,joined-path))
      (logjam:error (MODULE) 'routes/3 msg msg-args)
      (cnbbsite-content:four-oh-four
       (++ (strong "Unmatched Route: ") joined-path)))))
