@@ -3,30 +3,42 @@
 
 (include-lib "deps/exemplar/include/html-macros.lfe")
 
-(defun get-side-menu ()
-  (ul '(class "nav navbar-nav navbar-right")
-    (list
-      (li (a '(href "/") "Home"))
-      (li (a '(href "/content/1") "Books"))
-      (li (a '(href "/content/1") "Coming Soon"))
-      (li (a '(href "/content/2") "Purchasing"))
-      (li (a '(href "/content/3") "About")))))
+;;; Top nav
 
-(defun get-navbar()
+(defun top-nav ()
+  (top-menu-group '(("/" "Home")
+                    ("/books" "Books")
+                    ("/books/upcoming" "Coming Soon")
+                    ("/books/buy" "Purchasing")
+                    ("/about" "About"))))
+
+(defun top-menu-group (items)
   (nav '(class "navbar navbar-top" role "navigation")
     (div '(class "container")
       (div '(class "navbar-header")
         (list
-          (img '(src "/images/logo-1.6-long-3-x50.png"
-                 class "navlogo"))
+          (get-logo)
           (div '(class "collapse navbar-collapse navbar-ex1-collapse")
-            (get-side-menu)))))))
+            (ul '(class "nav navbar-nav navbar-right")
+                (lists:map #'top-menu-item/1 items))))))))
 
-(defun main-menu ()
+(defun top-menu-item
+  ((`(,path ,name))
+   (li (a `(href ,path) name))))
+
+(defun get-logo ()
+  (img '(src "/images/logo-1.6-long-3-x50.png"
+         class "navlogo")))
+
+;;; Side nav
+
+(defun side-nav ()
   (main-menu-group '((#(group-name "Books")
                       #(links (#("New Releases" "/books/new-releases" false)
                                #("Popular" "/books/popular" false)
-                               #("All" "/books/all" false))))
+                               #("Up-coming" "/books/upcoming" false)
+                               #("All" "/books/all" false)
+                               #("Where to Buy" "/books/buy" false))))
                      (#(group-name "Genres")
                       #(links (#("Historical Fiction" "/genres/hf" true)
                                #("Reference" "/genres/ref" false)
@@ -61,6 +73,26 @@
   ((`#(,name ,path ,active?))
    (li `(class ,(++ "list-group-item" (highlight active?)))
        (a `(href ,path) name))))
+
+;;; Bottom nav
+
+(defun bottom-nav ()
+  (bottom-menu-group '(("/about" "About")
+                       ("http://cnbbooks.blogspot.com" "Blog")
+                       ("/media" "Media")
+                       ("/books/buy" "How to Order"))))
+
+(defun bottom-menu-group (items)
+  (div '(class "bottom-nav")
+    (string:join
+      (lists:map #'bottom-menu-item/1 items)
+      " | ")))
+
+(defun bottom-menu-item
+  ((`(,path ,name))
+   (a `(href ,path) name)))
+
+;;; Nav utility functions
 
 (defun highlight (active)
   (if active

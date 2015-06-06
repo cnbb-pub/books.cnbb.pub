@@ -17,8 +17,7 @@
             (get-css)
             (get-favicon)))
         (body
-          (cnbbsite-content:get-content-sections
-            remaining))))))
+          (get-content-sections remaining))))))
 
 (defun get-css ()
   (list
@@ -32,8 +31,81 @@
           href "/images/favicon.png")))
 
 (defun base-sidebar-page (title sidebar remaining)
-  "We can also make building HTML easier by using functions."
   (base-page title
     (list
       sidebar
       remaining)))
+
+(defun get-content-sections (remaining)
+  (main
+   (list
+    (cnbbsite-nav:top-nav)
+    (div '(class "section" id "subheader")
+         (div '(class "container")
+              (div '(class "row text-right")
+                   (get-subheader-content))))
+    (div '(class "section" id "main")
+         (div '(class "container")
+              (div '(class "row well")
+                   remaining)))
+    (div '(class "section" id "footer")
+         (div '(class "container")
+              (div '(class "row well footer")
+                   (get-footer-content))))
+    (div '(class "section" id "subfooter")
+         (div '(class "container")
+              (div '(class "row text-right")
+                   (get-subfooter-content))))
+    (footer '(class "sticky-footer")
+            (div '(class "container text-center")
+                 (get-sticky-footer-content)))
+    (get-js))))
+
+(defun get-sidebar-content
+  ((`(#(title ,title) #(content ,content)) arg-data)
+   (get-sidebar-content
+    `(#(title ,title) #(subtitle "") #(content ,content)) arg-data))
+  ((`(#(title ,title) #(subtitle ,subtitle) #(content ,content)) arg-data)
+   (lfest-html-resp:ok
+    (base-sidebar-page
+     title
+     (div '(class "col-md-3 col-sm-4 sidebar")
+          (ul '(class "nav nav-stacked nav-pills")
+              (cnbbsite-nav:side-nav)))
+     (div
+      (list
+       (h1 title)
+       (h2 subtitle)
+       (div content)))))))
+
+(defun get-subheader-content ()
+  (div '(class "subheader")
+    (div '(class "social")
+      (list
+        (a `(href ,(cnbbsite-const:twitter)) (span '(class "icon-twitter")))
+        (span "&nbsp")
+        (a `(href ,(cnbbsite-const:blogfeed)) (span '(class "icon-rss")))))))
+
+
+(defun get-footer-content ()
+  (cnbbsite-nav:bottom-nav))
+
+(defun get-subfooter-content ()
+  (div '(class "subfooter")
+    (div '(class "social")
+      (list
+        (a `(href ,(cnbbsite-const:newslist)) (span '(class "icon-newspaper")))
+        (span "&nbsp")
+        (a `(href ,(cnbbsite-const:twitter)) (span '(class "icon-twitter")))
+        (span "&nbsp")
+        (a `(href ,(cnbbsite-const:blogfeed)) (span '(class "icon-rss")))))))
+
+(defun get-js ()
+  (list (script '(src "/js/jquery-1.11.3.min.js"))
+        (script '(src "/js/bootstrap-min.js"))))
+
+(defun get-sticky-footer-content ()
+  (div '(class "subfooter")
+       (span '(class "copyright")
+             "&copy; 2015 Cowboys 'N Beans Books")))
+

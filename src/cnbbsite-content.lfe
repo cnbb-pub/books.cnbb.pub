@@ -3,117 +3,116 @@
 
 (include-lib "deps/exemplar/include/html-macros.lfe")
 
-(defun get-content-sections (remaining)
-  (main
-   (list
-    (cnbbsite-nav:get-navbar)
-    (div '(class "section" id "subheader")
-         (div '(class "container")
-              (div '(class "row text-right")
-                   (get-subheader-content))))
-    (div '(class "section" id "main")
-         (div '(class "container")
-              (div '(class "row well")
-                   remaining)))
-    (div '(class "section" id "footer")
-         (div '(class "container")
-              (div '(class "row well footer")
-                   (get-footer-content))))
-    (div '(class "section" id "subfooter")
-         (div '(class "container")
-              (div '(class "row text-right")
-                   (get-subfooter-content))))
-    (footer '(class "sticky-footer")
-            (div '(class "container text-center")
-                 (get-sticky-footer-content)))
-    (get-js))))
+;;; Page-returning functions
 
-(defun get-sidebar-content (arg-data)
-  "1-arity content API function.
+;; Home Page
 
-  This function generates its HTML from scratch."
-  (let ((title "Main Page"))
-    (lfest-html-resp:ok
-        (cnbbsite-templates:base-sidebar-page
-          title
-          (div '(class "col-md-3 col-sm-4 sidebar")
-            (ul '(class "nav nav-stacked nav-pills")
-              (cnbbsite-nav:main-menu)))
-          (div
-            (list
-              (h1 title)
-              (h2 "Introduction")
-              (div
-                (p "This is the main page. Links are to the left."))))))))
+(defun home-page (arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "Home")
+      #(subtitle "Introduction")
+      #(content ,(get-home-page-content)))
+    arg-data))
 
-(defun get-content (item-id arg-data)
-  "2-arity content API.
+;; Books
 
-  This function generates its HTML from scratch."
-  ;; we'll pretent to pull content from a data store here ...
-  (let ((fetched-title "Queried Title")
-        (fetched-content "Some super-great queried lorem ipsum."))
-    (lfest-html-resp:ok
-      (cnbbsite-templates:base-page
-        fetched-title
-        (div
-          (list
-            (h1 fetched-title)
-            (h2 (++ "Item " item-id))
-            (div (p fetched-content))))))))
+(defun books (arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "Books")
+      #(content ""))
+    arg-data))
 
-(defun get-subheader-content ()
-  (div '(class "subheader")
-    (div '(class "social")
-      (list
-        (a `(href ,(cnbbsite-const:twitter)) (span '(class "icon-twitter")))
-        (span "&nbsp")
-        (a `(href ,(cnbbsite-const:blogfeed)) (span '(class "icon-rss")))))))
+(defun books-new (arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "New Books")
+      #(content ""))
+    arg-data))
 
-(defun get-content (user-id account-id arg-data)
-  "3-arity content API.
+(defun books-popular (arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "Popular Books")
+      #(content ""))
+    arg-data))
 
-  This function generates its HTML by calling another function. This is an
-  example of how one could do templating -- including putting HTML-generating
-  functions in their own modules."
-  ;; we'll pretent to pull content from a data store here ...
-  (let ((fetched-title "Queried Title")
-        (fetched-content "Some super-great queried lorem ipsum."))
-    (lfest-html-resp:ok
-      (cnbbsite-templates:base-page
-        fetched-title
-        (div
-          (list
-            (h1 fetched-title)
-            (h2 (++ "Relation: "
-                    user-id " (user id) | "
-                    account-id " (account id)"))
-            (div (p fetched-content))))))))
+(defun books-all (arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "All Books")
+      #(content ""))
+    arg-data))
 
-(defun get-footer-content ()
-  "About | Blog | Media | How to Order")
+(defun books-upcoming (arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "Upcoming Books")
+      #(content ""))
+    arg-data))
 
-(defun get-subfooter-content ()
-  (div '(class "subfooter")
-    (div '(class "social")
-      (list
-        (a `(href ,(cnbbsite-const:newslist)) (span '(class "icon-newspaper")))
-        (span "&nbsp")
-        (a `(href ,(cnbbsite-const:twitter)) (span '(class "icon-twitter")))
-        (span "&nbsp")
-        (a `(href ,(cnbbsite-const:blogfeed)) (span '(class "icon-rss")))))))
+(defun books-buy (arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "Buying Our Books")
+      #(content ""))
+    arg-data))
 
-(defun get-sticky-footer-content ()
-  (div '(class "subfooter")
-       (span '(class "copyright")
-             "&copy; 2015 Cowboys 'N Beans Books")))
+(defun book (isbn arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "[book title]")
+      #(content ,(++ "[ISBN: " isbn)))
+    arg-data))
+
+;; Genres
+
+(defun genres (arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "Genres")
+      #(content ""))
+    arg-data))
+
+(defun genre (id arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title ,(get-genre id))
+      #(content ""))
+    arg-data))
+
+;; Authors
+
+(defun authors (arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "Authors")
+      #(content ""))
+    arg-data))
+
+(defun author (id arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "[author name]")
+      #(content ,(++ "[id: " id " ]")))
+    arg-data))
+
+;; Company
+
+(defun about (arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "About Cowboys 'N Beans")
+      #(content ""))
+    arg-data))
+
+(defun media (arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "Media")
+      #(content ""))
+    arg-data))
+
+(defun contact (arg-data)
+  (cnbbsite-templates:get-sidebar-content
+    `(#(title "Contact")
+      #(content ""))
+    arg-data))
+
+;;; Content-returning functions
+
+(defun get-home-page-content ()
+  "This is the placeholder text for the Home page.")
 
 (defun icon-redirect (_arg-data)
   #(redirect_local "/images/favicon.png"))
-
-(defun get-js ()
-  (list (script '(src "/js/jquery-1.11.3.min.js"))
-        (script '(src "/js/bootstrap-min.js"))))
 
 (defun four-oh-four (message)
   "Custom 404 page."
@@ -125,6 +124,10 @@
             (h1 "404 - Not Found")
             (div (p message)))))))
 
-
-
-
+(defun get-genre
+  (("hf") "Historical Fiction")
+  (("ref") "Reference")
+  (("sf") "Science Fiction")
+  (("tech") "Technical")
+  (("ya") "Young Adult")
+  ((_) "Unknown Genre"))
