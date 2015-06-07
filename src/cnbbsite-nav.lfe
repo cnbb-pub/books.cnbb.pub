@@ -7,40 +7,18 @@
 ;;; Menus
 
 (defun top-nav ()
-  (top-menu-group '(("Home" "/")
-                    ("Books" "/books")
-                    ("Coming Soon" "/books/upcoming")
-                    ("Purchasing" "/books/buy")
-                    ("About" "/about"))))
+  (top-menu-group (cnbb-data:top-nav)))
 
 (defun side-nav
   (((match-arg server_path path))
    (logjam:debug (MODULE) 'side-nav/1 "pathinfo: ~p" `(,path))
     (side-nav-group
       (update-links
-        '((#(group-name "Books")
-           #(links (#("New Releases" "/books/new-releases" false)
-                    #("Popular" "/books/popular" false)
-                    #("Up-coming" "/books/upcoming" false)
-                    #("All" "/books/all" false)
-                    #("Where to Buy" "/books/buy" false))))
-          (#(group-name "Genres")
-           #(links (#("Historical Fiction" "/genres/hf" true)
-                    #("Reference" "/genres/ref" false)
-                    #("Science Fiction" "/genres/sf" false)
-                    #("Technical" "/genres/tech" false)
-                    #("Young Adult" "/genres/ya" false))))
-          (#(group-name "Authors")
-           #(links (#("Alice" "/authors/alice" false)
-                    #("Bob" "/authors/bob" false)
-                    #("Carol" "/authors/carol" false)))))
+        (cnbb-data:side-nav)
         path))))
 
 (defun bottom-nav ()
-  (bottom-menu-group '(("About" "/about")
-                       ("Blog" "http://cnbbooks.blogspot.com")
-                       ("Media" "/media")
-                       ("How to Order" "/books/buy"))))
+  (bottom-menu-group (cnbb-data:bottom-nav)))
 
 ;;; Top nav functions
 

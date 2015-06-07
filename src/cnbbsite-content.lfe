@@ -11,7 +11,7 @@
   (cnbb-tmpls:get-sidebar-content
     `(#(title "Home")
       #(subtitle "Introduction")
-      #(content ,(get-home-page-content)))
+      #(content ,(cnbb-data:get-home-page-content)))
     arg-data))
 
 ;; Books
@@ -68,7 +68,7 @@
 
 (defun genre (id arg-data)
   (cnbb-tmpls:get-sidebar-content
-    `(#(title ,(get-genre id))
+    `(#(title ,(cnbb-data:get-genre id))
       #(content ""))
     arg-data))
 
@@ -108,9 +108,6 @@
 
 ;;; Content-returning functions
 
-(defun get-home-page-content ()
-  "This is the placeholder text for the Home page.")
-
 (defun icon-redirect (_arg-data)
   #(redirect_local "/images/favicon.png"))
 
@@ -123,11 +120,3 @@
           (list
             (h1 "404 - Not Found")
             (div (p message)))))))
-
-(defun get-genre
-  (("hf") "Historical Fiction")
-  (("ref") "Reference")
-  (("sf") "Science Fiction")
-  (("tech") "Technical")
-  (("ya") "Young Adult")
-  ((_) "Unknown Genre"))
