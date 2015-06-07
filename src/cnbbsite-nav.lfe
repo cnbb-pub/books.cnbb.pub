@@ -120,11 +120,11 @@
 (defun get-collapse-state (items)
   (if (has-active? items)
     ""
-    "collapsed"))
+    " collapsed"))
 
 (defun get-collapse-in (items)
   (if (has-active? items)
-    "in"
+    " in"
     ""))
 
 (defun get-aria-expanded (items)
