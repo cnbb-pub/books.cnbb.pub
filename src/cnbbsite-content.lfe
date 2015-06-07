@@ -89,19 +89,19 @@
 ;; Company
 
 (defun about (arg-data)
-  (cnbb-tmpls:get-sidebar-content
+  (cnbb-tmpls:get-content
     `(#(title "About Cowboys 'N Beans")
       #(content ""))
     arg-data))
 
 (defun media (arg-data)
-  (cnbb-tmpls:get-sidebar-content
+  (cnbb-tmpls:get-content
     `(#(title "Media")
       #(content ""))
     arg-data))
 
 (defun contact (arg-data)
-  (cnbb-tmpls:get-sidebar-content
+  (cnbb-tmpls:get-content
     `(#(title "Contact")
       #(content ""))
     arg-data))

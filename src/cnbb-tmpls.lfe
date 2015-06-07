@@ -61,6 +61,20 @@
                  (get-sticky-footer-content)))
     (get-js))))
 
+(defun get-content
+  ((`(#(title ,title) #(content ,content)) arg-data)
+   (get-content
+    `(#(title ,title) #(subtitle "") #(content ,content)) arg-data))
+  ((`(#(title ,title) #(subtitle ,subtitle) #(content ,content)) arg-data)
+   (lfest-html-resp:ok
+    (base-page
+     title
+     (div
+      (list
+       (h1 title)
+       (h2 subtitle)
+       (div content)))))))
+
 (defun get-sidebar-content
   ((`(#(title ,title) #(content ,content)) arg-data)
    (get-sidebar-content

@@ -6,18 +6,17 @@
 * [ ] Move "data" of menus into dedicated module
 * [ ] Add color highlights to books, authors, and genres
   * [x] Each should have it's own "theme color"
-  * [s] Menus should have a bar of color above/below
+  * [x] Menus should have a bar of color above/below
   * [ ] Panoramic header images for each top-level page should be in matching color
-  
+* [x] Only show side nav on main, books, genres, and authors pages
+  * [ ] Create location path content for use above main content
+    * http://getbootstrap.com/components/#breadcrumbs
+  * [ ] Show path above main content for all non-main-pages
 
 ## Not-Started
 
 * [ ] Make subtitle font smaller
 * [ ] Update to be responsive
-* [ ] Only show side nav on main, books, genres, and authors pages
-  * [ ] Create location path content for use above main content
-    * http://getbootstrap.com/components/#breadcrumbs
-  * [ ] Show path above main content for all non-main-pages
 * [ ] Create author template page
 * [ ] Create book template page
 * [ ] Create genre template page
