@@ -1,9 +1,6 @@
 (defmodule cnbbsite
   (export all))
 
-(defun my-adder (x y)
-  (+ x (+ y 1)))
-
 (defun out (arg-data)
   "This is called by YAWS when the requested URL matches the URL specified in
   the YAWS config (see ./etc/yaws.conf) with the 'appmods' directive for the
@@ -11,4 +8,4 @@
 
   In particular, this function is intended to handle all traffic for this
   app."
-  (lfest:out-helper arg-data #'cnbbsite-routes:routes/3))
+  (lfest:out-helper arg-data #'cnbb-routes:routes/3))

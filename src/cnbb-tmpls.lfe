@@ -39,7 +39,7 @@
 (defun get-content-sections (remaining)
   (main
    (list
-    (cnbbsite-nav:top-nav)
+    (cnbb-nav:top-nav)
     (div '(class "section" id "subheader")
          (div '(class "container")
               (div '(class "row text-right")
@@ -85,7 +85,7 @@
      title
      (div '(class "col-md-3 col-sm-4 sidebar")
           (ul '(class "nav nav-stacked nav-pills")
-              (cnbbsite-nav:side-nav arg-data)))
+              (cnbb-nav:side-nav arg-data)))
      (div
       (list
        (h1 title)
@@ -102,7 +102,7 @@
 
 
 (defun get-footer-content ()
-  (cnbbsite-nav:bottom-nav))
+  (cnbb-nav:bottom-nav))
 
 (defun get-subfooter-content ()
   (div '(class "subfooter")

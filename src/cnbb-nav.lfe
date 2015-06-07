@@ -1,4 +1,4 @@
-(defmodule cnbbsite-nav
+(defmodule cnbb-nav
   (export all))
 
 (include-lib "yaws/include/yaws_api.hrl")

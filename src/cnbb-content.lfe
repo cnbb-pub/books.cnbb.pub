@@ -1,4 +1,4 @@
-(defmodule cnbbsite-content
+(defmodule cnbb-content
   (export all))
 
 (include-lib "deps/exemplar/include/html-macros.lfe")
