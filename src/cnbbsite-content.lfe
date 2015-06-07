@@ -68,7 +68,8 @@
 
 (defun genre (id arg-data)
   (cnbb-tmpls:get-sidebar-content
-    `(#(title ,(cnbb-data:get-genre id))
+    `(#(title "Genre")
+      #(subtitle ,(cnbb-data:get-genre id))
       #(content ""))
     arg-data))
 
@@ -82,7 +83,8 @@
 
 (defun author (id arg-data)
   (cnbb-tmpls:get-sidebar-content
-    `(#(title "[author name]")
+    `(#(title "Author")
+      #(subtitle "[author name]")
       #(content ,(++ "[id: " id " ]")))
     arg-data))
 

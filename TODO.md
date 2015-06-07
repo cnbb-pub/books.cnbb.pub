@@ -59,3 +59,4 @@
   upon the monitor/display, greys of different darkeness with the same
   values in r, g, and b, will seem to have blue, green, or red highlights
 * [x] Move "data" of menus into dedicated module
+* [x] On book/genre/author pages use title & subtitle
