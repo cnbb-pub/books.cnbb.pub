@@ -13,7 +13,7 @@
   (((match-arg server_path path))
    (logjam:debug (MODULE) 'side-nav/1 "pathinfo: ~p" `(,path))
     (side-nav-group
-      (update-links
+      (update-menu-data
         (cnbb-data:side-nav)
         path))))
 
@@ -87,8 +87,29 @@
    (li `(class ,(++ "list-group-item" (highlight active?)))
        (a `(href ,path) name))))
 
-(defun update-links (items path)
-  items)
+(defun update-menu-data (items path)
+  (logjam:debug (MODULE) 'update-links "Items: ~p" `(,items))
+  (lists:map (lambda (x) (check-section x path)) items))
+
+(defun check-section
+  ((`(,group ,links) path)
+   (logjam:debug (MODULE) 'check-section "Links: ~p" `(,links))
+   `(,group ,(check-links links path))))
+
+(defun check-links
+  ((`#(links ,links) path)
+   (logjam:debug (MODULE) 'check-links "Links: ~p" `(,links))
+   `#(links ,(lists:map (lambda (x) (check-link x path)) links))))
+
+(defun check-link
+  ((`#(,name ,path ,active?) current-path)
+   (logjam:debug (MODULE) 'check-link "Link: ~p" `(,path))
+   `#(,name ,path ,(set-if-active path current-path))))
+
+(defun set-if-active (path current-path)
+  (if (=:= path current-path)
+    'true
+    'false))
 
 (defun highlight (active)
   (if active
