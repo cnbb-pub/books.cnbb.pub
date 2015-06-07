@@ -3,6 +3,43 @@
 
 (include-lib "deps/exemplar/include/html-macros.lfe")
 
+(defun get-sidebar-content
+  ((`(#(title ,title) #(content ,content)) arg-data)
+   (get-sidebar-content
+    `(#(title ,title) #(subtitle "") #(content ,content)) arg-data))
+  ((`(#(title ,title) #(subtitle ,subtitle) #(content ,content)) arg-data)
+   (lfest-html-resp:ok
+    (base-sidebar-page
+     title
+     (div '(class "col-md-3 col-sm-4 sidebar")
+          (ul '(class "nav nav-stacked nav-pills")
+              (cnbb-nav:side-nav arg-data)))
+     (div
+      (list
+       (h1 title)
+       (h2 subtitle)
+       (div content)))))))
+
+(defun get-content
+  ((`(#(title ,title) #(content ,content)) arg-data)
+   (get-content
+    `(#(title ,title) #(subtitle "") #(content ,content)) arg-data))
+  ((`(#(title ,title) #(subtitle ,subtitle) #(content ,content)) arg-data)
+   (lfest-html-resp:ok
+    (base-page
+     title
+     (div
+      (list
+       (h1 title)
+       (h2 subtitle)
+       (div content)))))))
+
+(defun base-sidebar-page (title sidebar remaining)
+  (base-page title
+    (list
+      sidebar
+      remaining)))
+
 (defun base-page (title remaining)
   "A function to provide the base for all pages."
   (list
@@ -30,67 +67,45 @@
           type "image/png"
           href "/images/favicon.png")))
 
-(defun base-sidebar-page (title sidebar remaining)
-  (base-page title
-    (list
-      sidebar
-      remaining)))
-
 (defun get-content-sections (remaining)
   (main
    (list
     (cnbb-nav:top-nav)
-    (div '(class "section" id "subheader")
-         (div '(class "container")
-              (div '(class "row text-right")
-                   (get-subheader-content))))
-    (div '(class "section" id "main")
-         (div '(class "container")
-              (div '(class "row well")
-                   remaining)))
-    (div '(class "section" id "footer")
-         (div '(class "container")
-              (div '(class "row well footer")
-                   (get-footer-content))))
-    (div '(class "section" id "subfooter")
-         (div '(class "container")
-              (div '(class "row text-right")
-                   (get-subfooter-content))))
-    (footer '(class "sticky-footer")
-            (div '(class "container text-center")
-                 (get-sticky-footer-content)))
+    (get-subheader)
+    (get-main remaining)
+    (get-footer)
+    (get-subfooter)
+    (get-stickyfooter)
     (get-js))))
 
-(defun get-content
-  ((`(#(title ,title) #(content ,content)) arg-data)
-   (get-content
-    `(#(title ,title) #(subtitle "") #(content ,content)) arg-data))
-  ((`(#(title ,title) #(subtitle ,subtitle) #(content ,content)) arg-data)
-   (lfest-html-resp:ok
-    (base-page
-     title
-     (div
-      (list
-       (h1 title)
-       (h2 subtitle)
-       (div content)))))))
+(defun get-subheader ()
+  (div '(class "section" id "subheader")
+       (div '(class "container")
+            (div '(class "row text-right")
+                 (get-subheader-content)))))
 
-(defun get-sidebar-content
-  ((`(#(title ,title) #(content ,content)) arg-data)
-   (get-sidebar-content
-    `(#(title ,title) #(subtitle "") #(content ,content)) arg-data))
-  ((`(#(title ,title) #(subtitle ,subtitle) #(content ,content)) arg-data)
-   (lfest-html-resp:ok
-    (base-sidebar-page
-     title
-     (div '(class "col-md-3 col-sm-4 sidebar")
-          (ul '(class "nav nav-stacked nav-pills")
-              (cnbb-nav:side-nav arg-data)))
-     (div
-      (list
-       (h1 title)
-       (h2 subtitle)
-       (div content)))))))
+(defun get-main (remaining)
+  (div '(class "section" id "main")
+       (div '(class "container")
+            (div '(class "row well")
+                 remaining))))
+
+(defun get-footer ()
+  (div '(class "section" id "footer")
+       (div '(class "container")
+            (div '(class "row well footer")
+                 (get-footer-content)))))
+
+(defun get-subfooter ()
+  (div '(class "section" id "subfooter")
+       (div '(class "container")
+            (div '(class "row text-right")
+                 (get-subfooter-content)))))
+
+(defun get-stickyfooter ()
+  (footer '(class "sticky-footer")
+          (div '(class "container text-center")
+               (get-sticky-footer-content))))
 
 (defun get-subheader-content ()
   (div '(class "subheader")
@@ -99,7 +114,6 @@
         (a `(href ,(cnbb-const:twitter)) (span '(class "icon-twitter")))
         (span "&nbsp")
         (a `(href ,(cnbb-const:blogfeed)) (span '(class "icon-rss")))))))
-
 
 (defun get-footer-content ()
   (cnbb-nav:bottom-nav))
