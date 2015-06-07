@@ -30,6 +30,7 @@
   '(("About" "/about")
     ("Blog" "http://cnbbooks.blogspot.com")
     ("Media" "/media")
+    ("Contact" "/contact")
     ("How to Order" "/books/buy")))
 
 (defun get-genre
