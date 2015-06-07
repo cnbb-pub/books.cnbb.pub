@@ -5,8 +5,8 @@
 
 * [ ] Move "data" of menus into dedicated module
 * [ ] Add color highlights to books, authors, and genres
-  * [ ] Each should have it's own "theme color"
-  * [ ] Menus should have a bar of color above/below
+  * [x] Each should have it's own "theme color"
+  * [s] Menus should have a bar of color above/below
   * [ ] Panoramic header images for each top-level page should be in matching color
   
 

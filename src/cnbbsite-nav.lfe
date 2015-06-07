@@ -88,7 +88,7 @@
            (div `(class "panel-heading"
                   role "tab"
                   id ,(++ name "GroupHeading"))
-                (h4 '(class "panel-title"
+                (h4 `(class ,(++ "panel-title " name)
                       id "-collapsible-list-group-")
                     (a `(class ,collapse-state
                          data-toggle "collapse"
