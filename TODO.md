@@ -3,7 +3,6 @@
 
 ## In-Progress
 
-* [ ] Move "data" of menus into dedicated module
 * [ ] Add color highlights to books, authors, and genres
   * [x] Each should have it's own "theme color"
   * [x] Menus should have a bar of color above/below
@@ -59,3 +58,4 @@
   * This didn't get fixed, since it was a perceptual problem -- depending
   upon the monitor/display, greys of different darkeness with the same
   values in r, g, and b, will seem to have blue, green, or red highlights
+* [x] Move "data" of menus into dedicated module
