@@ -9,6 +9,10 @@
 (defun top-nav ()
   (top-menu-group (cnbb-data:top-nav)))
 
+(defun bread-nav
+  (((match-arg server_path path))
+   (bread-items path)))
+
 (defun side-nav
   (((match-arg server_path path))
    (logjam:debug (MODULE) 'side-nav/1 "pathinfo: ~p" `(,path))
@@ -39,6 +43,19 @@
 (defun get-logo ()
   (img '(src "/images/logo-1.6-long-3-x50.png"
          class "navlogo")))
+
+;;; Breadcrumb nav functions
+
+(defun bread-items (path)
+  (ol '(class "breadcrumb")
+    (list
+      (li "")
+      (lists:map
+        #'bread-item/1
+        (string:tokens path "/")))))
+
+(defun bread-item (path-segment)
+  (li (a `(href ,path-segment) path-segment)))
 
 ;;; Side nav functions
 

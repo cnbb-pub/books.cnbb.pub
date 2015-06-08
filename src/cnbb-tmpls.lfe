@@ -18,7 +18,8 @@
       (list
        (h1 title)
        (h2 subtitle)
-       (div content)))))))
+       (div content)))
+     arg-data))))
 
 (defun get-content
   ((`(#(title ,title) #(content ,content)) arg-data)
@@ -32,15 +33,18 @@
       (list
        (h1 title)
        (h2 subtitle)
-       (div content)))))))
+       (div content)))
+     arg-data))))
 
-(defun base-sidebar-page (title sidebar remaining)
-  (base-page title
+(defun base-sidebar-page (title sidebar remaining arg-data)
+  (base-page
+    title
     (list
       sidebar
-      remaining)))
+      remaining)
+    arg-data))
 
-(defun base-page (title remaining)
+(defun base-page (title remaining arg-data)
   "A function to provide the base for all pages."
   (list
     (!doctype 'html)
@@ -54,7 +58,7 @@
             (get-css)
             (get-favicon)))
         (body
-          (get-content-sections remaining))))))
+          (get-content-sections remaining arg-data))))))
 
 (defun get-css ()
   (list
@@ -67,11 +71,12 @@
           type "image/png"
           href "/images/favicon.png")))
 
-(defun get-content-sections (remaining)
+(defun get-content-sections (remaining arg-data)
   (main
    (list
     (cnbb-nav:top-nav)
     (get-subheader)
+    ;;(get-bread arg-data)
     (get-main remaining)
     (get-footer)
     (get-subfooter)
@@ -83,6 +88,12 @@
        (div '(class "container")
             (div '(class "row text-right")
                  (get-subheader-content)))))
+
+(defun get-bread (arg-data)
+  (div '(class "section" id "subheader")
+       (div '(class "container")
+            (div '(class "row")
+                 (get-bread-content arg-data)))))
 
 (defun get-main (remaining)
   (div '(class "section" id "main")
@@ -114,6 +125,9 @@
         (a `(href ,(cnbb-const:twitter)) (span '(class "icon-twitter")))
         (span "&nbsp")
         (a `(href ,(cnbb-const:blogfeed)) (span '(class "icon-rss")))))))
+
+(defun get-bread-content (arg-data)
+  (cnbb-nav:bread-nav arg-data))
 
 (defun get-footer-content ()
   (cnbb-nav:bottom-nav))
