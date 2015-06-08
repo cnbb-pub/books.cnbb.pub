@@ -11,7 +11,7 @@
   (cnbb-tmpls:get-sidebar-content
     `(#(title "Home")
       #(subtitle "Introduction")
-      #(content ,(cnbb-data:get-home-page-content)))
+      #(content "This is the placeholder text for the Home page."))
     arg-data))
 
 ;; Books
@@ -99,7 +99,7 @@
 (defun media (arg-data)
   (cnbb-tmpls:get-content
     `(#(title "Media")
-      #(content ""))
+      #(content ,(get-media-content)))
     arg-data))
 
 (defun contact (arg-data)
@@ -122,3 +122,23 @@
           (list
             (h1 "404 - Not Found")
             (div (p message)))))))
+
+(defun get-media-content ()
+  (list
+    (h1 "Heading 1")
+    (h2 "Heading 2")
+    (h3 "Heading 3")
+    (h4 "Heading 4")
+    (h5 "Heading 5")
+    (h6 "Heading 6")
+    (h2 "Logos")
+    (p "Click each logo below to download a high-resolution version.")
+    (h3 "Standard")
+    (a '(href "/images/logos/logo-standard.png" target "_blank")
+       (img '(src "/images/logos/logo-standard-thumb.png")))
+    (h3 "Square")
+    (a '(href "/images/logos/logo-square.png" target "_blank")
+       (img '(src "/images/logos/logo-square-thumb.png")))
+    (h3 "Long")
+    (a '(href "/images/logos/logo-long.png" target "_blank")
+       (img '(src "/images/logos/logo-long-thumb.png")))))

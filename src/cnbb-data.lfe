@@ -40,6 +40,3 @@
   (("tech") "Technical")
   (("ya") "Young Adult")
   ((_) "Unknown Genre"))
-
-(defun get-home-page-content ()
-  "This is the placeholder text for the Home page.")
