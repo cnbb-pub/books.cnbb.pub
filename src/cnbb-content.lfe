@@ -93,7 +93,7 @@
 (defun about (arg-data)
   (cnbb-tmpls:get-content
     `(#(title "About Cowboys 'N Beans")
-      #(content ""))
+      #(content ,(get-about-content)))
     arg-data))
 
 (defun media (arg-data)
@@ -123,14 +123,14 @@
             (h1 "404 - Not Found")
             (div (p message)))))))
 
+(defun get-about-content ()
+  (p (++ "Cowboys 'N Beans Books is a small publishing company "
+         "which takes a special interest in obscure works of an "
+         "interesting and unique nature. We hope you enjoy what "
+         "we have discovered and shared with you.")))
+
 (defun get-media-content ()
   (list
-    (h1 "Heading 1")
-    (h2 "Heading 2")
-    (h3 "Heading 3")
-    (h4 "Heading 4")
-    (h5 "Heading 5")
-    (h6 "Heading 6")
     (h2 "Logos")
     (p "Click each logo below to download a high-resolution version.")
     (h3 "Standard")

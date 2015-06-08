@@ -15,7 +15,8 @@
 
 ## Not-Started
 
-* [ ] Make subtitle font smaller
+* [ ] Move background colors back to grey
+* [ ] Change "active" background color from grey to its theme color
 * [ ] Update to be responsive
 * [ ] Create author template page
 * [ ] Create book template page
@@ -61,3 +62,4 @@
 * [x] Move "data" of menus into dedicated module
 * [x] On book/genre/author pages use title & subtitle
 * [x] Rename rest of modules (except main one)
+* [x] Make subtitle font smaller
