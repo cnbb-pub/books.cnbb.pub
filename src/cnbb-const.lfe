@@ -1,4 +1,4 @@
-(defmodule cnbbsite-const
+(defmodule cnbb-const
   (export all))
 
 (defun title-prefix () "")

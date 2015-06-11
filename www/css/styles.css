@@ -4,8 +4,8 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 60px;
+  /* background-color: #fefeff; */
 }
 
 a {
@@ -16,8 +16,54 @@ a:hover {
   color: #999;
 }
 
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 22px;
+    color: #666;
+}
+
+h4 {
+    font-size: 18px;
+    color: #666;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 12px;
+    color: #666;
+}
+
+p {
+    font-size: 16px;
+}
+
+ul.navbar-nav {
+  font-size: 115%;
+}
+
+ul.nav, ul.nav li a:hover {
+  position: relative;
+  z-index: 0;
+}
+
 .navlogo {
+  position: relative;
   padding-top: 0.5em;
+  z-index: 42;
+}
+
+.navbar {
+  background-image: -webkit-linear-gradient(#f5f5fa, #e4e4ee 50%, #e0e0e4) !important;
+  background-image: -o-linear-gradient(#f5f5fa, #e4e4ee 50%, #e0e0e4) !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5fa), color-stop(50%, #e4e4ee), to(#e0e0e4)) !important;
+  background-image: linear-gradient(#f5f5fa, #e4e4ee 50%, #e0e0e4) !important;
+  border-color: #d0d0d5 !important;
 }
 
 .navbar-collapse {
@@ -26,6 +72,47 @@ a:hover {
 
 .subheader {
   padding-bottom: 1em;
+}
+
+.well {
+  background-color: #f0f0f5;
+  border-color: #e0e0e3;
+}
+
+.Books.panel-title,
+.Genres.panel-title,
+.Authors.panel-title {
+  border-top: 3px solid;
+  padding-top: 3px;
+}
+
+.Books.panel-title {
+  border-top-color: #a6a;
+}
+
+.Genres.panel-title {
+  border-top-color: #66a;
+}
+
+.Authors.panel-title {
+  border-top-color: #6a6;
+}
+
+.list-group-item.active,
+.list-group-item.active:hover,
+list-group-item.active:focus {
+  z-index: 2;
+  background-color: #ccc;
+  border-color: #ccc;
+}
+
+.list-group-item.active a {
+  color: #444;
+}
+
+.list-group-item.active a:hover,
+list-group-item.active a:focus {
+  color: #222;
 }
 
 .social {
