@@ -3,6 +3,9 @@
 
 ## In-Progress
 
+* [x] Add "News" to main nav
+  * [ ] Link to page that pulls down and parses the RSS feed for the
+        announcement mail list
 * [ ] Add color highlights to books, authors, and genres
   * [x] Each should have it's own "theme color"
   * [x] Menus should have a bar of color above/below
@@ -15,13 +18,6 @@
 
 ## Not-Started
 
-<<<<<<< HEAD
-* [ ] Add "News" to main nav
-  * [ ] Link to page that pulls down and parses the RSS feed for the
-        announcement mail list
-* [ ] Fix mouse-over on main nav obscuring logo
-* [ ] Update routes to point to new pages
-* [ ] Move background colors back to grey
 * [ ] Change "active" background color from grey to its theme color
 * [ ] Update to be responsive
 * [ ] Create author template page
@@ -72,3 +68,4 @@
 * [x] On book/genre/author pages use title & subtitle
 * [x] Rename rest of modules (except main one)
 * [x] Make subtitle font smaller
+* [x] Move background colors back to grey

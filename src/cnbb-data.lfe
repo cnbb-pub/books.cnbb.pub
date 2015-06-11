@@ -4,6 +4,7 @@
 (defun top-nav ()
 '(("Home" "/")
   ("Books" "/books")
+  ("News" "https://groups.google.com/forum/#!forum/cnbbooks-announcements")
   ("Coming Soon" "/books/upcoming")
   ("Purchasing" "/books/buy")
   ("About" "/about")))

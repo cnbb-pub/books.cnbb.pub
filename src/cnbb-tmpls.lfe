@@ -148,6 +148,11 @@
 
 (defun get-sticky-footer-content ()
   (div '(class "subfooter")
-       (span '(class "copyright")
-             "&copy; 2015 Cowboys 'N Beans Books")))
+       (list
+         (span '(class "copyright")
+               "&copy; 2015 Cowboys 'N Beans Books")
+         (span '(class "copyright")
+               "&nbsp;|&nbsp;Cowboys 'N Beans Books is a subsidiary of ")
+         (a '(class "copyright" href "http://billo.systems/")
+               "Billo Systems, Ltd. Co."))))
 

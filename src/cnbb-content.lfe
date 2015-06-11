@@ -43,7 +43,7 @@
 (defun books-upcoming (arg-data)
   (cnbb-tmpls:get-sidebar-content
     `(#(title "Upcoming Books")
-      #(content ""))
+      #(content ,(get-upcoming-content)))
     arg-data))
 
 (defun books-buy (arg-data)
@@ -142,3 +142,6 @@
     (h3 "Long")
     (a '(href "/images/logos/logo-long.png" target "_blank")
        (img '(src "/images/logos/logo-long-thumb.png")))))
+
+(defun get-upcoming-content ()
+  "")

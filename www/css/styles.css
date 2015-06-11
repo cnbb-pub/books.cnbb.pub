@@ -58,25 +58,12 @@ ul.nav, ul.nav li a:hover {
   z-index: 42;
 }
 
-.navbar {
-  background-image: -webkit-linear-gradient(#f5f5fa, #e4e4ee 50%, #e0e0e4) !important;
-  background-image: -o-linear-gradient(#f5f5fa, #e4e4ee 50%, #e0e0e4) !important;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5fa), color-stop(50%, #e4e4ee), to(#e0e0e4)) !important;
-  background-image: linear-gradient(#f5f5fa, #e4e4ee 50%, #e0e0e4) !important;
-  border-color: #d0d0d5 !important;
-}
-
 .navbar-collapse {
   margin-top: -0.8em;
 }
 
 .subheader {
   padding-bottom: 1em;
-}
-
-.well {
-  background-color: #f0f0f5;
-  border-color: #e0e0e3;
 }
 
 .Books.panel-title,
