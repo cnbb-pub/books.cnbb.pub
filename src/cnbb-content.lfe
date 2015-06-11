@@ -1,7 +1,7 @@
 (defmodule cnbb-content
   (export all))
 
-(include-lib "deps/exemplar/include/html-macros.lfe")
+(include-lib "cnbbsite/include/cnbb-html.lfe")
 
 ;;; Page-returning functions
 
@@ -92,19 +92,22 @@
 
 (defun about (arg-data)
   (cnbb-tmpls:get-content
-    `(#(title "About Cowboys 'N Beans")
+    `(#(title ,(cnbb-const:short-name))
+      #(subtitle "A Tale of Cowboys 'N Beans")
       #(content ,(get-about-content)))
     arg-data))
 
 (defun media (arg-data)
   (cnbb-tmpls:get-content
-    `(#(title "Media")
+    `(#(title ,(cnbb-const:short-name))
+      #(subtitle "Media")
       #(content ,(get-media-content)))
     arg-data))
 
 (defun contact (arg-data)
   (cnbb-tmpls:get-content
-    `(#(title "Contact")
+    `(#(title ,(cnbb-const:short-name))
+      #(subtitle "Contact")
       #(content ""))
     arg-data))
 
@@ -131,17 +134,21 @@
 
 (defun get-media-content ()
   (list
-    (h2 "Logos")
-    (p "Click each logo below to download a high-resolution version.")
-    (h3 "Standard")
-    (a '(href "/images/logos/logo-standard.png" target "_blank")
-       (img '(src "/images/logos/logo-standard-thumb.png")))
-    (h3 "Square")
-    (a '(href "/images/logos/logo-square.png" target "_blank")
-       (img '(src "/images/logos/logo-square-thumb.png")))
-    (h3 "Long")
-    (a '(href "/images/logos/logo-long.png" target "_blank")
-       (img '(src "/images/logos/logo-long-thumb.png")))))
+    (list
+      (heading1 "Text")
+      )
+    (list
+      (heading1 "Logos")
+      (p "Click each logo below to download a high-resolution version.")
+      (heading2 "Standard")
+      (a '(href "/images/logos/logo-standard.png" target "_blank")
+         (img '(src "/images/logos/logo-standard-thumb.png")))
+      (heading2 "Square")
+      (a '(href "/images/logos/logo-square.png" target "_blank")
+         (img '(src "/images/logos/logo-square-thumb.png")))
+      (heading2 "Long")
+      (a '(href "/images/logos/logo-long.png" target "_blank")
+         (img '(src "/images/logos/logo-long-thumb.png"))))))
 
 (defun get-upcoming-content ()
   "")

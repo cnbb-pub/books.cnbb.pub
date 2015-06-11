@@ -129,7 +129,7 @@ list-group-item.active a:focus {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 85px;
   background-color: #fcfcfc;
   /*
   background-image: linear-gradient(#eee, #fff 50%, #eaeaea);

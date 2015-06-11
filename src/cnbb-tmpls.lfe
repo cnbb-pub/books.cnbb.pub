@@ -150,9 +150,13 @@
   (div '(class "subfooter")
        (list
          (span '(class "copyright")
-               "&copy; 2015 Cowboys 'N Beans Books")
+               (++ "&copy; "
+                   (cnbb-const:copy-year)
+                   ", "
+                   (cnbb-const:short-name)))
          (span '(class "copyright")
-               "&nbsp;|&nbsp;Cowboys 'N Beans Books is a subsidiary of ")
+               (list (br)
+                     (++ (cnbb-const:legal-name) " is a subsidiary of ")))
          (a '(class "copyright" href "http://billo.systems/")
                "Billo Systems, Ltd. Co."))))
 
