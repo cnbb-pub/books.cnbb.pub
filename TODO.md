@@ -12,6 +12,9 @@
 
 ## Not-Started
 
+* [ ] Add "News" to main nav
+  * [ ] Link to page that pulls down and parses the RSS feed for the
+        announcement mail list
 * [ ] Fix mouse-over on main nav obscuring logo
 * [ ] Update routes to point to new pages
 * [ ] Update to be responsive
@@ -22,6 +25,9 @@
 * [ ] Create author template page
 * [ ] Create book template page
 * [ ] Create category template page
+* [ ] Add support for parsing RSS feeds
+  * [ ] Create a library for RSS feeds
+  * [ ] Create a library for XML parsing (wrapper for erlsom)
 * [ ] Store content in Redis
   * [ ] Write code to pull content out of Redis
   * [ ] Support Markdown source and convert to HTML
