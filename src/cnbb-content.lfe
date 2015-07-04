@@ -118,25 +118,29 @@
 
 (defun four-oh-four (message)
   "Custom 404 page."
-    (lfest-html-resp:not-found
-      (cnbb-tmpls:base-page
-        "404"
-        (div
-          (list
-            (h1 "404 - Not Found")
-            (div (p message)))))))
+  (lfest-html-resp:not-found
+   (cnbb-tmpls:base-page
+    "404"
+    (div
+     (list
+      (h1 "404 - Not Found")
+      (div (p message)))))))
+
+(defun get-content (id)
+  (let ((filename (filename:join "content" (++ (atom_to_list id) ".html"))))
+    (case (file:read_file filename)
+      (`#(ok ,data)
+        (binary_to_list data))
+      (x
+       x))))
 
 (defun get-about-content ()
-  (p (++ "Cowboys 'N Beans Books is a small publishing company "
-         "which takes a special interest in obscure works of an "
-         "interesting and unique nature. We hope you enjoy what "
-         "we have discovered and shared with you.")))
+  (get-content 'about-cnbb))
 
 (defun get-media-content ()
   (list
     (list
-      (heading1 "Text")
-      )
+      (heading1 "Text"))
     (list
       (heading1 "Logos")
       (p "Click each logo below to download a high-resolution version.")
