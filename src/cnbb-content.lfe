@@ -126,16 +126,26 @@
       (h1 "404 - Not Found")
       (div (p message)))))))
 
+(defun get-content-dir ()
+  (case (os:getenv "CNBB_CONTENT_DIR")
+    ('false "/more-www/cnbb/content")
+    (x x)))
+
+(defun get-content-file (id)
+  (filename:join
+   (get-content-dir)
+   (++ (atom_to_list id) ".html")))
+
 (defun get-content (id)
-  (let ((filename (filename:join "content" (++ (atom_to_list id) ".html"))))
-    (case (file:read_file filename)
-      (`#(ok ,data)
-        (binary_to_list data))
-      (x
-       x))))
+  (case (file:read_file (get-content-file id))
+    (`#(ok ,data)
+     (binary_to_list data))
+    (x
+     x)))
 
 (defun get-about-content ()
   (get-content 'about-cnbb))
+  ;;(io_lib:format "~p" `(,(file:get_cwd))))
 
 (defun get-media-content ()
   (list

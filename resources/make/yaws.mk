@@ -9,6 +9,7 @@ app-deps:
 
 dev: app-deps compile-no-deps
 	@ERL_LIBS=$(shell lfetool info erllibs) \
+	CNBB_CONTENT_DIR=$(shell pwd)/content \
 	$(YAWS) -i --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID)
 
 daemon: app-deps compile
