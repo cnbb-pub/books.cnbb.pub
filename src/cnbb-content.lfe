@@ -108,7 +108,7 @@
   (cnbb-tmpls:get-content
     `(#(title ,(cnbb-const:short-name))
       #(subtitle "Contact")
-      #(content ""))
+      #(content ,(get-contact)))
     arg-data))
 
 ;;; Content-returning functions
@@ -140,7 +140,16 @@
 (defun get-media-content ()
   (list
     (list
-      (heading1 "Text"))
+     (heading1 "Text")
+     (p (list
+         (em "Long Name")
+         ": Cowboys 'N Beans Books"))
+     (p (list
+         (em "Short Name")
+         ": C&B|Books"))
+     (p (list
+        (em "Legal Name")
+        ": Cowboys 'N Beans Books LLC")))
     (list
       (heading1 "Logos")
       (p "Click each logo below to download a high-resolution version.")
@@ -153,6 +162,28 @@
       (heading2 "Long")
       (a '(href "/images/logos/logo-long.png" target "_blank")
          (img '(src "/images/logos/logo-long-thumb.png"))))))
+
+(defun get-contact ()
+  (list
+   (heading1 "Email")
+   (p "Email is probably the best way to reach us. There are several addresses below you may use, dependeing upon your needs.")
+   (ul (list
+        (li (list (em "General Information") ": " (a '(href "mailto:info@cnbbooks.co") "info@cnbbooks.co")))
+        (li (list (em "Submissions") ": " (a '(href "mailto:submissions@cnbbooks.co") "submissions@cnbbooks.co")))))
+   (heading1 "Address")
+   (p (list "Cowboys 'N Beans Books LLC" (br) "PO Box 912" (br) "Lakefield, MN 56150" (br) "USA"))
+   (heading1 "Social Media")
+   (ul (list
+        (li (list (a '(href "http://cnbbooks.blogspot.com/") "Blog")
+                  " | ("
+                  (a '(href "") "feed")
+                  ") "))
+        (li (a '(href "http://twitter.com/CNBBooks") "Twitter"))))
+   (heading1 "Mail Lists")
+   (p "")
+   (ul (list
+        (li (a '(href "https://groups.google.com/forum/#!forum/cnbbooks-announcements")
+               "Announcements"))))))
 
 (defun get-upcoming-content ()
   "")
