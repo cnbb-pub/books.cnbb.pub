@@ -10,8 +10,8 @@
 (defun home-page (arg-data)
   (cnbb-tmpls:get-sidebar-content
     `(#(title "Home")
-      #(subtitle "Introduction")
-      #(content "This is the placeholder text for the Home page."))
+      #(subtitle "Welcome to the C&B|Books site!")
+      #(content ,(get-home-page-content)))
     arg-data))
 
 ;; Books
@@ -136,6 +136,8 @@
    (get-content-dir)
    (++ (atom_to_list id) ".html")))
 
+;;; HTML Fragment Content
+
 (defun get-content (id)
   (case (file:read_file (get-content-file id))
     (`#(ok ,data)
@@ -145,7 +147,14 @@
 
 (defun get-about-content ()
   (get-content 'about-cnbb))
-  ;;(io_lib:format "~p" `(,(file:get_cwd))))
+
+;;; Generated Content
+
+(defun get-home-page-content ()
+  (p (++ "As we begin building out our catalog we will update this page as "
+         "well as the rest of the site with more content. For now, though, "
+         "feel free to poke around, subscribe to the announcements mail list, "
+         "and follow us on Twitter.")))
 
 (defun get-media-content ()
   (list

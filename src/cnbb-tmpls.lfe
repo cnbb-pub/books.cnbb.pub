@@ -58,7 +58,9 @@
             (get-css)
             (get-favicon)))
         (body
-          (get-content-sections remaining arg-data))))))
+          (list
+            (get-content-sections remaining arg-data)
+            (get-google-tracking)))))))
 
 (defun get-css ()
   (list
@@ -160,3 +162,13 @@
          (a '(class "copyright" href "http://billo.systems/")
                "Billo Systems, Ltd. Co."))))
 
+(defun get-google-tracking ()
+  "")
+  ;; (script
+  ;;  (++ "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ "
+  ;;      "(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), "
+  ;;      "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) "
+  ;;      "})(window,document,'script','//www.google-analytics.com/analytics.js','ga'); "
+
+  ;;      "ga('create', 'UA-64694381-1', 'auto'); "
+  ;;      "ga('send', 'pageview');")))
