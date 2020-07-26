@@ -23,6 +23,6 @@ publish: compile
 	rsync -vazP {$(PUB_DEPS)ebin/*} \
 	$(REMOTE_HOST):$(REMOTE_EBIN_DIR)
 	rsync -vazP {$(PUB_INCS)$()include/*} \
-	$(REMOTE_HOST):$(REMOTE_INCLUDE_DIR) \
+	$(REMOTE_HOST):$(REMOTE_INCLUDE_DIR)
 	rsync -vazP content/* \
 	$(REMOTE_HOST):$(REMOTE_CONTENT_DIR)
