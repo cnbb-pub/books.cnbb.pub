@@ -25,19 +25,15 @@ build:
 ifndef GEN
 	$(error $(BINARY_ERROR))
 endif
-	# $(MAKE) backup-book-git
 	@$(GEN) build -o $(PUBLISH_DIR)
-	# $(MAKE) restore-book-git
 
 serve:
-	# $(MAKE) backup-book-git
-	@$(GEN) serve -p $(PORT)
-	# $(MAKE) restore-book-git
+	@$(GEN) serve -o $(PUBLISH_DIR) -p $(PORT)
 
 run: serve
 
 clean:
-	@rm -f $(PUBLISH_DIR)/README.md
+	@rm -rf $(PUBLISH_DIR)/*
 
 book-init:
 	@git submodule update --init --recursive
@@ -54,19 +50,13 @@ $(PUBLISH_DIR)/README.md:
 	@echo 'Published at [cnbb.pub/](http://cnbb.pub/)' >> $(PUBLISH_DIR)/README.md
 	@cd $(PUBLISH_DIR) && git add README.md
 
-commit: clean build $(PUBLISH_DIR)/README.md
-	-@cd $(PUBLISH_DIR) && \
-	git add * && \
-	git commit -am "Regenerated site content." > /dev/null && \
-	git push origin $(PUBLISH_BRANCH) && \
-	cd -  && \
-	git add $(PUBLISH_DIR) && \
-	git commit -am "Updated submodule for recently generated site content." && \
-	git submodule update && \
+commit: clean build
+	@git add content/* templates/*
+	@git commit -am "Updated site content." > /dev/null
 	git push origin $(BUILDER_BRANCH)
 
 publish:
-	aws --profile=$(AWS_PROFILE) --region=$(S3_REGION) \
+	@aws --profile=$(AWS_PROFILE) --region=$(S3_REGION) \
 		s3 sync $(PUBLISH_DIR)/ $(S3_BUCKET)
 
 build-publish: build commit publish
