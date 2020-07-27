@@ -1,4 +1,18 @@
 +++
-title = "C&B | Books | About"
-template = "about.html"
+title = "C&B|Books | About"
+template = "1-col-page.html"
 +++
+# C&amp;B|Books
+
+## A Tale of Cowboys 'N Beans
+
+<img style="float: left" src="/images/logos/logo-square-small.png">Cowboys 'N Beans Books is not a large company and has no interest in becoming
+a "power player" in the publishing industry. We do, however, have a very keen
+intertest in providing titles to small communities with great passion for their
+subject areas and no means of sharing published works with each other.
+
+Cowboys 'N Beans Books formed when we realized that it would be much easier to
+make those dreams come true if we formed a company whose sole purpose was to
+focus on that goal. Cowboys 'N Beans Books is amd will remain a small publishing
+company which takes a special interest in obscure works of an interesting and
+unique nature. We hope you enjoy what we have discovered and shared with you.

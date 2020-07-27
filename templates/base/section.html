@@ -1,0 +1,7 @@
+{% extends "base/common.html" %}
+
+{% block meta %}
+{% include "base/meta.html" %}
+<title>C&B|Books | {% block pagetitle %}{{ section.title }}{% endblock pagetitle %}</title>
+<meta name="description" content="{% block pagedescription %}{{ section.description }}{% endblock pagedescription %}">
+{% endblock meta %}
