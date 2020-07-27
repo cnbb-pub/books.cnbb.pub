@@ -22,7 +22,7 @@ USA
 
 ### Social Media
 
-* [Blog](http://cnbbooks.blogspot.com/) | ([feed](#))
+* [Blog](http://cnbbooks.blogspot.com/) | ([feed](http://feeds.feedburner.com/CowboysNBeansBooks))
 * [Twitter](http://twitter.com/CNBBooks)
 
 ### Mail Lists
