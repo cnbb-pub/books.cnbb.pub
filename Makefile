@@ -1,16 +1,23 @@
-BIN = mdbook
+BIN = zola
 GEN := $(shell which $(BIN) 2> /dev/null)
 DOWNLOAD = https://github.com/rust-lang/mdBook/releases
-PUBLISH_DIR = book
+PUBLISH_DIR = site
 PUBLISH_BRANCH = master
 BUILDER_BRANCH = builder
 TMP_GIT_DIR = /tmp/cnbb-site-git
+PORT = 5099
+AWS_PROFILE = cnbb
+S3_BUCKET = s3://cnbb.pub
+S3_REGION = eu-north-1
+S3_ENDPOINT = $(S3_BUCKET).s3-website.$(S3_REGION).amazonaws.com
 
 define BINARY_ERROR
 
 No $(BIN) found in Path.
 
-Download $(BIN) from $(DOWNLOAD).
+Install $(BIN):
+
+	$ brew install $(BIN)
 
 endef
 
@@ -18,14 +25,14 @@ build:
 ifndef GEN
 	$(error $(BINARY_ERROR))
 endif
-	$(MAKE) backup-book-git
-	@$(GEN) build
-	$(MAKE) restore-book-git
+	# $(MAKE) backup-book-git
+	@$(GEN) build -o $(PUBLISH_DIR)
+	# $(MAKE) restore-book-git
 
 serve:
-	$(MAKE) backup-book-git
-	@$(GEN) serve
-	$(MAKE) restore-book-git
+	# $(MAKE) backup-book-git
+	@$(GEN) serve -p $(PORT)
+	# $(MAKE) restore-book-git
 
 run: serve
 
@@ -47,7 +54,7 @@ $(PUBLISH_DIR)/README.md:
 	@echo 'Published at [cnbb.pub/](http://cnbb.pub/)' >> $(PUBLISH_DIR)/README.md
 	@cd $(PUBLISH_DIR) && git add README.md
 
-publish: clean build $(PUBLISH_DIR)/README.md
+commit: clean build $(PUBLISH_DIR)/README.md
 	-@cd $(PUBLISH_DIR) && \
 	git add * && \
 	git commit -am "Regenerated site content." > /dev/null && \
@@ -58,7 +65,11 @@ publish: clean build $(PUBLISH_DIR)/README.md
 	git submodule update && \
 	git push origin $(BUILDER_BRANCH)
 
-build-publish: build publish
+publish:
+	aws --profile=$(AWS_PROFILE) --region=$(S3_REGION) \
+		s3 sync $(PUBLISH_DIR)/ $(S3_BUCKET)
+
+build-publish: build commit publish
 
 spell-check:
 	@for FILE in `find . -name "*.md"`; do \
@@ -80,7 +91,7 @@ add-words:
 	@echo "Adding words:"
 	@for WORD in `echo $(WORDS)| tr "," "\n"| tr "," "\n" | sed -e 's/^[ ]*//' | sed -e 's/[ ]*$$//'`; \
 	do echo "  $$WORD ..."; \
-	echo "*$$WORD\n#" | aspell -a; \
+	echo "*$$WORD\n#" | aspell -a > /dev/null; \
 	done
 	@echo
 
