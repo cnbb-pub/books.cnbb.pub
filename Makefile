@@ -33,7 +33,7 @@ serve:
 run: serve
 
 clean:
-	@rm -rf $(PUBLISH_DIR)/*
+	@rm -rf $(PUBLISH_DIR)
 
 book-init:
 	@git submodule update --init --recursive
@@ -50,7 +50,7 @@ $(PUBLISH_DIR)/README.md:
 	@echo 'Published at [books.cnbb.pub/](http://books.cnbb.pub/)' >> $(PUBLISH_DIR)/README.md
 	@cd $(PUBLISH_DIR) && git add README.md
 
-commit: clean build
+commit:
 	@git add content/* templates/*
 	@git commit -am "Updated site content." > /dev/null
 	git push origin $(BUILDER_BRANCH)
@@ -59,7 +59,7 @@ publish:
 	@aws --profile=$(AWS_PROFILE) --region=$(S3_REGION) \
 		s3 sync $(PUBLISH_DIR)/ $(S3_BUCKET)
 
-build-publish: build commit publish
+build-publish: clean build commit publish
 
 spell-check:
 	@for FILE in `find . -name "*.md"`; do \
