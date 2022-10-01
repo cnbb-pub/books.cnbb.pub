@@ -7,8 +7,8 @@ BUILDER_BRANCH = builder
 TMP_GIT_DIR = /tmp/cnbb-site-git
 PORT = 5099
 AWS_PROFILE = cnbb
-S3_BUCKET = s3://cnbb.pub
-S3_REGION = eu-north-1
+S3_BUCKET = s3://books.cnbb.pub
+S3_REGION = us-east-2
 S3_ENDPOINT = $(S3_BUCKET).s3-website.$(S3_REGION).amazonaws.com
 
 define BINARY_ERROR
@@ -46,8 +46,8 @@ restore-book-git:
 	@mv -v $(TMP_GIT_DIR)/.git $(PUBLISH_DIR)/
 
 $(PUBLISH_DIR)/README.md:
-	@echo '# Content the cnbb.pub site > $(PUBLISH_DIR)/README.md
-	@echo 'Published at [cnbb.pub/](http://cnbb.pub/)' >> $(PUBLISH_DIR)/README.md
+	@echo '# Content for the books.cnbb.pub site > $(PUBLISH_DIR)/README.md
+	@echo 'Published at [books.cnbb.pub/](http://books.cnbb.pub/)' >> $(PUBLISH_DIR)/README.md
 	@cd $(PUBLISH_DIR) && git add README.md
 
 commit: clean build
