@@ -1,5 +1,7 @@
 BIN = zola
+AWS_BIN = aws
 GEN := $(shell which $(BIN) 2> /dev/null)
+DEPLOYER := $(shell which $(AWS_BIN) 2> /dev/null)
 DOWNLOAD = https://github.com/rust-lang/mdBook/releases
 PUBLISH_DIR = site
 PUBLISH_BRANCH = master
@@ -11,7 +13,7 @@ S3_BUCKET = s3://books.cnbb.pub
 S3_REGION = us-east-2
 S3_ENDPOINT = $(S3_BUCKET).s3-website.$(S3_REGION).amazonaws.com
 
-define BINARY_ERROR
+define ZOLA_BINARY_ERROR
 
 No $(BIN) found in Path.
 
@@ -21,9 +23,19 @@ Install $(BIN):
 
 endef
 
+define AWS_BINARY_ERROR
+
+No $(AWS_BIN) found in Path.
+
+Install $(AWS_BIN):
+
+	$ brew install awscli
+
+endef
+
 build:
 ifndef GEN
-	$(error $(BINARY_ERROR))
+	$(error $(ZOLA_BINARY_ERROR))
 endif
 	@$(GEN) build -o $(PUBLISH_DIR)
 
@@ -56,7 +68,10 @@ commit:
 	git push origin $(BUILDER_BRANCH)
 
 publish:
-	@aws --profile=$(AWS_PROFILE) --region=$(S3_REGION) \
+ifndef DEPLOYER
+	$(error $(AWS_BINARY_ERROR))
+endif
+	@$(AWS_BIN) --profile=$(AWS_PROFILE) --region=$(S3_REGION) \
 		s3 sync $(PUBLISH_DIR)/ $(S3_BUCKET)
 
 build-publish: clean build commit publish
