@@ -63,8 +63,8 @@ $(PUBLISH_DIR)/README.md:
 	@cd $(PUBLISH_DIR) && git add README.md
 
 commit:
-	@git add content/* templates/*
-	@git commit -am "Updated site content." > /dev/null
+	@-git add content/* templates/*
+	@-git commit -am "Updated site content." > /dev/null
 	-git push origin $(BUILDER_BRANCH)
 
 publish:
